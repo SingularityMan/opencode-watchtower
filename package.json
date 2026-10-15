@@ -1,0 +1,37 @@
+{
+  "name": "opencode-watchtower",
+  "version": "0.1.0",
+  "description": "A monitor tool for OpenCode: watch a command, log file, or polled probe, and get woken when output matches.",
+  "type": "module",
+  "main": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.18.0"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "monitor",
+    "watch",
+    "logs"
+  ],
+  "author": "SingularityMan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SingularityMan/opencode-watchtower.git"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
