@@ -10,20 +10,34 @@ A `monitor` tool for [OpenCode](https://opencode.ai). It runs a command, tails a
 
 ## Install
 
-Add the package to your OpenCode config.
+Copy `index.ts` from this repository into an OpenCode plugin directory and restart your session. The `monitor` tool is then available to the agent alongside the built-in tools.
 
-`opencode.json`:
+Linux / macOS:
 
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-watchtower"]
-}
+```sh
+mkdir -p ~/.config/opencode/plugins
+curl -o ~/.config/opencode/plugins/watchtower.ts \
+  https://raw.githubusercontent.com/SingularityMan/opencode-watchtower/main/index.ts
 ```
 
-OpenCode installs the package with Bun at startup. Restart your session. The `monitor` tool is then available to the agent alongside the built-in tools.
+Windows (PowerShell):
 
-To try it without installing, copy `index.ts` to `~/.config/opencode/plugin/watchtower.ts`.
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.config\opencode\plugins" | Out-Null
+Invoke-WebRequest `
+  https://raw.githubusercontent.com/SingularityMan/opencode-watchtower/main/index.ts `
+  -OutFile "$env:USERPROFILE\.config\opencode\plugins\watchtower.ts"
+```
+
+Project-level instead of global: place the file in `.opencode/plugins/` in your project.
+
+If the plugin fails to load because `@opencode-ai/plugin` cannot be resolved, add a `package.json` to your config directory (`~/.config/opencode/package.json` or `.opencode/package.json`) containing:
+
+```json
+{ "dependencies": { "@opencode-ai/plugin": "^1.18.0" } }
+```
+
+An npm package release of this plugin is planned; until it exists, use the steps above.
 
 ## What the tool does
 
